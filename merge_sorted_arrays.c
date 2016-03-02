@@ -35,6 +35,17 @@ void merge(int ar1[], int ar2[], int m, int n)
             ar2[i] = last;
         }
    }
+   
+   printf("\n After Merging First Array: ");
+    for (i=0; i<m; i++)
+        printf("%d ", ar1[i]);
+        
+    printf("\n After Merging Second Array: ");
+    for (i=0; i<n; i++)
+        printf("%d ", ar2[i]);
+        
+   
+   
 }
  
 // Driver program
@@ -48,15 +59,15 @@ int main(void)
     int n = sizeof(ar2)/sizeof(ar2[0]);
  
     merge(ar1, ar2, m, n);
- 
+ /*
     printf("\n After Merging First Array: ");
     for (i=0; i<m; i++)
-        printf("%d \t", ar1[i]);
+        printf("%d ", ar1[i]);
         
     printf("\n After Merging Second Array: ");
     for (i=0; i<n; i++)
-        printf("%d\t", ar2[i]);
-        
+        printf("%d ", ar2[i]);
+   */     
    printf("\n");
    return 0;
 }

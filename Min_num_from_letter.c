@@ -21,20 +21,17 @@ Examples:
 #include<string.h>
 
 
-void PrintMinNumberForPattern(string arr)
+void PrintMinNumberForPattern(char arr[10])
 {
     // Initialize current_max (to make sure that
     // we don't use repeated character
-    int curr_max = 0;
- 
-    // Initialize last_entry (Keeps track for
-    // last printed digit)
+    int i, j, curr_max = 0;
     int last_entry = 0;
  
-    int j;
- 
+ 	int size = strlen(arr);
+ 	
     // Iterate over input array
-    for (int i=0; i<arr.length(); i++)
+    for (i=0; i<size; i++)
     {
         // Initialize 'noOfNextD' to get count of
         // next D's available
@@ -48,7 +45,7 @@ void PrintMinNumberForPattern(string arr)
             // Calculate number of next consecutive D's
             // available
             j = i+1;
-            while (arr[j] == 'D' && j < arr.length())
+            while (arr[j] == 'D' && j < size)
             {
                 noOfNextD++;
                 j++;
@@ -60,8 +57,8 @@ void PrintMinNumberForPattern(string arr)
  
                 // If 'I' is first letter, print incremented
                 // sequence from 1
-                cout << " " << ++last_entry;
-                cout << " " << curr_max;
+                printf("%d", ++last_entry);
+                printf("%d", curr_max);
  
                 // Set max digit reached
                 last_entry = curr_max;
@@ -75,14 +72,14 @@ void PrintMinNumberForPattern(string arr)
  
                 // Print digit for I
                 last_entry = curr_max;
-                cout << " " << last_entry;
+                printf("%d", last_entry);
             }
- 
+ 			int k;
             // For all next consecutive 'D' print 
             // decremented sequence
-            for (int k=0; k<noOfNextD; k++)
+            for (k=0; k<noOfNextD; k++)
             {
-                cout << " " << --last_entry;
+                printf("%d", --last_entry);
                 i++;
             }
             break;
@@ -94,7 +91,7 @@ void PrintMinNumberForPattern(string arr)
                 // If 'D' is first letter in sequence
                 // Find number of Next D's available
                 j = i+1;
-                while (arr[j] == 'D' && j < arr.length())
+                while (arr[j] == 'D' && j < size)
                 {
                     noOfNextD++;
                     j++;
@@ -105,7 +102,7 @@ void PrintMinNumberForPattern(string arr)
                 curr_max = noOfNextD + 2;
  
                 // Print twice for the first time
-                cout << " " << curr_max << " " << curr_max - 1;
+                printf("%d %d", curr_max, curr_max-1);
  
                 // Store last entry
                 last_entry = curr_max - 1;
@@ -115,24 +112,18 @@ void PrintMinNumberForPattern(string arr)
                 // If current 'D' is not first letter
  
                 // Decrement last_entry
-                cout << " " << last_entry - 1;
+                printf("%d",last_entry - 1);
                 last_entry--;
             }
             break;
         }
     }
-    cout << endl;
+    printf("\n");
 }
  
 // Driver program to test above
 int main()
 {
-    PrintMinNumberForPattern("IDID");
-    PrintMinNumberForPattern("I");
-    PrintMinNumberForPattern("DD");
-    PrintMinNumberForPattern("II");
-    PrintMinNumberForPattern("DIDI");
-    PrintMinNumberForPattern("IIDDD");
-    PrintMinNumberForPattern("DDIDDIID");
+    PrintMinNumberForPattern("IIII");
     return 0;
 }
