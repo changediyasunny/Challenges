@@ -1,7 +1,8 @@
 /*
 Sorted Linked List to Balanced BST
 
-Given a Singly Linked List which has data members sorted in ascending order. Construct a Balanced Binary Search Tree which has same data members as the given Linked List.
+Given a Singly Linked List which has data members sorted in ascending order. Construct a Balanced Binary Search 
+Tree which has same data members as the given Linked List.
 
 Examples:
 

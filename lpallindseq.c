@@ -1,6 +1,9 @@
 /*
 
-Given a sequence, find the length of the longest palindromic subsequence in it. For example, if the given sequence is “BBABCBCAB”, then the output should be 7 as “BABCBAB” is the longest palindromic subseuqnce in it. “BBBBB” and “BBCBB” are also palindromic subsequences of the given sequence, but not the longest ones.
+Given a sequence, find the length of the longest palindromic subsequence in it. 
+For example, if the given sequence is “BBABCBCAB”, then the output should be 7 as “BABCBAB” is the longest 
+palindromic subseuqnce in it.
+“BBBBB” and “BBCBB” are also palindromic subsequences of the given sequence, but not the longest ones.
 
 */
 
@@ -22,8 +25,6 @@ int lps(char *str)
    // Strings of length 1 are palindrome of lentgh 1
    for (i = 0; i < n; i++)
       L[i][i] = 1;
- 
- 
     for (cl=2; cl<=n; cl++)
     {
         for (i=0; i<n-cl+1; i++)

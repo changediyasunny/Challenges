@@ -49,7 +49,7 @@ def palindromeSubStrs(s):
         m[s[i]] = 1
  
     # printing all distinct palindromes from hash map
-    print "Below are " + str(len(m)) + " pali sub-strings"
+    #print "Below are " + str(len(m)) + " pali sub-strings"
     for i in m:
         print i
  
