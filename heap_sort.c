@@ -26,13 +26,11 @@ void maxHeapify(struct MaxHeap* maxHeap, int idx)
     int left = (idx << 1) + 1;  // left = 2*idx + 1
     int right = (idx + 1) << 1; // right = 2*idx + 2
  
-    // See if left child of root exists and is greater than
-    // root
+    // See if left child of root exists and is greater than root
     if (left < maxHeap->size && maxHeap->array[left] > maxHeap->array[largest])
         largest = left;
  	
-    // See if right child of root exists and is greater than
-    // the largest so far
+    // See if right child of root exists and is greater than the largest so far
     if (right < maxHeap->size && maxHeap->array[right] > maxHeap->array[largest])
         largest = right;
  
