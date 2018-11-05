@@ -24,6 +24,7 @@ def two_sums(nums, target):
             return [ hash_map[nums[i]], i ]
         else:
             hash_map[t] = i
+        print(hash_map)
 
 def main():
     result = two_sums([2,7,9,11], 9)

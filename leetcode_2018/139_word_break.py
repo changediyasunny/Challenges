@@ -35,9 +35,28 @@ Space complexity : O(n). Length of p array is n+1.
 
 """
 
+### Using BFS
+def wordBreak(s, wordDict):
+    """
+    :type s: str
+    :type wordDict: List[str]
+    :rtype: bool
+    """
+    visited = [0] * len(s)
+    queue_list = [0]
+    while(queue_list):
+        start = queue_list.pop()
+        if visited[start] == 0:
+            for i in range(start+1, len(s)+1):
+                if s[start:i] in wordDict:
+                    queue_list.append(i)
+                    if i == len(s):
+                        return True
+            visited[start] = 1
+    return False
 
 
-
+### Using DP
 def wordBreak(s, wordDict):
     """
     :type s: str
