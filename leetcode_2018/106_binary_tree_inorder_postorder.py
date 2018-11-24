@@ -1,6 +1,33 @@
 """
 106. Construct Binary Tree from Inorder and Postorder Traversal
 
+Given inorder and postorder traversal of a tree, construct the binary tree.
+
+Note:
+You may assume that duplicates do not exist in the tree.
+
+For example, given
+
+inorder = [9,3,15,20,7]
+postorder = [9,15,7,20,3]
+Return the following binary tree:
+
+    3
+   / \
+  9  20
+    /  \
+   15   7
+
+
+The core idea is: Starting from the last element of the postorder and inorder array, we put elements from postorder array to a stack and
+each one is the right child of the last one until an element in postorder array is equal to the element on the inorder array. Then,
+we pop as many as elements we can from the stack and decrease the mark in inorder array until the peek() element is not equal to the mark
+value or the stack is empty. Then, the new element that we are gonna scan from postorder array is the left child of the last element we
+have popped out from the stack.
+
+(a) Inorder (Left, Root, Right)
+(b) Preorder (Root, Left, Right)
+(c) Postorder (Left, Right, Root)
 """
 
 # Definition for a binary tree node.
