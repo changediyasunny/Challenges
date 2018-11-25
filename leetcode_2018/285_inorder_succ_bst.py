@@ -2,11 +2,9 @@
 285. Inorder Successor in BST
 
 Given a binary search tree and a node in it, find the in-order successor of that node in the BST.
-
 Note: If the given node has no in-order successor in the tree, return null.
 
 Example 1:
-
 Input: root = [2,1,3], p = 1
 
   2
@@ -29,8 +27,6 @@ Input: root = [5,3,6,2,4,null,null,1], p = 6
 Output: null
 
 """
-
-
 # Definition for a binary tree node.
 class TreeNode(object):
     def __init__(self, x):
