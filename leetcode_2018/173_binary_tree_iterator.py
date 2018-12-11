@@ -6,10 +6,6 @@ Calling next() will return the next smallest number in the BST.
 
 Note: next() and hasNext() should run in average O(1) time and uses O(h) memory, where h is the height of the tree.
 
-Credits:
-Special thanks to @ts for adding this problem and creating all test cases.
-
-
 Input: [8,3,10,1,6,null,14,null,null,4,7,13,null]
 
 
@@ -38,7 +34,7 @@ class BSTIterator(object):
         """
         self.stack = []
         self.find_left(root)
-        
+
 
     def hasNext(self):
         """
@@ -55,12 +51,12 @@ class BSTIterator(object):
         node = self.stack.pop()
         self.find_left(node.right)
         return node.val
-    
+
     def find_left(self, root):
         while root:
             self.stack.append(root)
             root = root.left
-        
+
 
 # Your BSTIterator will be called like this:
 # i, v = BSTIterator(root), []
