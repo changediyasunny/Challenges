@@ -40,7 +40,29 @@ def draw_circle_bi_search(r2):
 
         x+=1
     return result
+# Bresenham's midpoint circle algorithm
+def drawcircle(x0,y0,radius)
+{
+    x = radius
+    y = 0
+    err = 0
+    while (x >= y):
+        putpixel(x0 + x, y0 + y, 7)
+        putpixel(x0 + y, y0 + x, 7)
+        putpixel(x0 - y, y0 + x, 7)
+        putpixel(x0 - x, y0 + y, 7)
+        putpixel(x0 - x, y0 - y, 7)
+        putpixel(x0 - y, y0 - x, 7)
+        putpixel(x0 + y, y0 - x, 7)
+        putpixel(x0 + x, y0 - y, 7)
 
+        if (err <= 0):
+            y += 1
+            err += 2*y + 1
+        if (err > 0):
+            x -= 1
+            err -= 2*x + 1
+}
 if __name__=='__main__':
     profile.run('print(draw_circle(1000000))')
     #profile.run('print draw_circle_bi_search(1000000)')
