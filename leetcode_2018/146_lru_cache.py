@@ -4,7 +4,8 @@
 Design and implement a data structure for Least Recently Used (LRU) cache. It should support the following operations: get and put.
 
 get(key) - Get the value (will always be positive) of the key if the key exists in the cache, otherwise return -1.
-put(key, value) - Set or insert the value if the key is not already present. When the cache reached its capacity, it should invalidate the least recently used item before inserting a new item.
+put(key, value) - Set or insert the value if the key is not already present. When the cache reached its capacity, it should invalidate the least
+recently used item before inserting a new item.
 
 Follow up:
 Could you do both operations in O(1) time complexity?
@@ -62,21 +63,21 @@ class LRUCache:
         self.tail = Node(0,0)
         self.head.next = self.tail
         self.tail.prev = self.head
-        
+
     def _remove(self, node):
         p = node.prev
         n = node.next
         p.next = n
         n.prev = p
-    
+
     def _add(self, node):
         p = self.tail.prev
         p.next = node
         self.tail.prev = node
         node.prev = p
         node.next = self.tail
-        
-        
+
+
     def get(self, key):
         """
         :type key: int
@@ -104,7 +105,7 @@ class LRUCache:
             n = self.head.next
             self._remove(n)
             del self.hashmap[n.key]
-        
+
 
 
 # Your LRUCache object will be instantiated and called as such:
