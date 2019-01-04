@@ -49,32 +49,53 @@ def construct_dict(word_list):
                 d[s] = [word]
     return d
 
-def word_ladder(beginWord, endWord, wordList):
+def findLadders(self, beginWord, endWord, wordList):
+    """
+    :type beginWord: str
+    :type endWord: str
+    :type wordList: List[str]
+    :rtype: List[List[str]]
+    """
+    def construct_dict(word_list):
+        d = {}
+        for word in word_list:
+            for i in range(len(word)):
+                s = word[:i] + "_" + word[i+1:]
+                try:
+                    d[s].append(word)
+                except:
+                    d[s] = [word]
+        return d
 
     def bfs_words(begin, end, dict_words):
-        queue= [(begin, [begin])]
+        queue= [(begin, 1, [begin])]
+        order = {}
         visited = set()
         result = []
         while queue:
-            word, steps = queue.pop(0)
+            word, level, steps = queue.pop(0)
             if word == end:
-                pp.pprint(">> %s" %steps)
-                result.append(steps)
+                if not result:
+                    result.append(steps)
+                elif result and len(steps) <= len(result[0]):
+                    result.append(steps)
             if word in visited:
-                continue
+                if word in order and level > order[word]:
+                    continue
             visited.add(word)
+            order[word] = level
             for i in range(len(word)):
                 s = word[:i] + "_" + word[i+1:]
                 neigh_words = dict_words.get(s, [])
                 for neigh in neigh_words:
-                    if neigh not in visited:
-                        queue.append((neigh, steps + [neigh]))
+                    if neigh not in order:
+                        queue.append((neigh, level+1, steps + [neigh]))
         return result
+
     d = construct_dict(wordList)
-    pp.pprint(d)
     return bfs_words(beginWord, endWord, d)
 
 beginWord = 'hit'
 endWord = 'cog'
 wordList = ["hot","dot","dog","lot","log","cog"]
-word_ladder2(beginWord, endWord, wordList)
+findLadders(beginWord, endWord, wordList)
