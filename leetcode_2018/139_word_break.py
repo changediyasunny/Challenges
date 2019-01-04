@@ -2,7 +2,8 @@
 
 139. Word Break
 
-Given a non-empty string s and a dictionary wordDict containing a list of non-empty words, determine if s can be segmented into a space-separated sequence of one or more dictionary words.
+Given a non-empty string s and a dictionary wordDict containing a list of non-empty words, determine if s can be
+segmented into a space-separated sequence of one or more dictionary words.
 
 Note:
 
@@ -27,12 +28,9 @@ Example 3:
 Input: s = "catsandog", wordDict = ["cats", "dog", "sand", "and", "cat"]
 Output: false
 
-
+both solutions:
 Time complexity : O(n^2). Two loops are their to fill dp array.
-
 Space complexity : O(n). Length of p array is n+1.
-
-
 """
 
 ### Using BFS
@@ -42,17 +40,17 @@ def wordBreak(s, wordDict):
     :type wordDict: List[str]
     :rtype: bool
     """
-    visited = [0] * len(s)
+    visited = set()
     queue_list = [0]
     while(queue_list):
         start = queue_list.pop()
-        if visited[start] == 0:
+        if start not in visited:
             for i in range(start+1, len(s)+1):
                 if s[start:i] in wordDict:
                     queue_list.append(i)
                     if i == len(s):
                         return True
-            visited[start] = 1
+            visited.add(start)
     return False
 
 
@@ -66,9 +64,9 @@ def wordBreak(s, wordDict):
     wordDict = ['leet', 'code']
     dp = [False for i in range(len(s)+1)] # dp[i] means wordBreak(s[:i],wordDict)
     dp[0] = True
-    for i in range(len(s)+1):
-        for j in range(i)[::-1]:
+    for i in range(1, len(s)+1):
+        for j in range(i):
             if dp[j] and s[j:i] in wordDict:
                 dp[i] = True
-                continue
+                break
     return dp[-1]
