@@ -1,7 +1,8 @@
 """
 200. Number of Islands
 
-Given a 2d grid map of '1's (land) and '0's (water), count the number of islands. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.
+Given a 2d grid map of '1's (land) and '0's (water), count the number of islands. An island is surrounded by water and is formed by connecting
+adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.
 
 Example 1:
 
@@ -27,7 +28,7 @@ DFS & BFS: Find strongly connected components of graph
 
 Time complexity : O(M * N) where M is the number of rows and N is the number of columns.
 
-Space complexity : O(O(min(M,N)) because in worst case where the grid is filled with lands, 
+Space complexity : O(O(min(M,N)) because in worst case where the grid is filled with lands,
 the size of queue can grow up to min(M,NM,N).
 """
 
@@ -50,10 +51,10 @@ def numIslands(self, grid):
     count = 0
     if not grid:
         return 0;
-    
+
     rows = len(grid)
     cols = len(grid[0])
-    
+
     for i in range(rows):
         for j in range(cols):
             if grid[i][j] == '1':
