@@ -11,7 +11,7 @@ trie.insert("apple");
 trie.search("apple");   // returns true
 trie.search("app");     // returns false
 trie.startsWith("app"); // returns true
-trie.insert("app");   
+trie.insert("app");
 trie.search("app");     // returns true
 Note:
 
@@ -29,7 +29,7 @@ Output:
 
 class Node():
     def __init__(self):
-        self.data = {}
+        self.children = {}
         self.flag = False
 
 class Trie:
@@ -39,7 +39,7 @@ class Trie:
         Initialize your data structure here.
         """
         self.root = Node()
-        
+
 
     def insert(self, word):
         """
@@ -49,13 +49,13 @@ class Trie:
         """
         current = self.root
         for w in word:
-            temp_node = current.data.get(w, None)
+            temp_node = current.children.get(w, None)
             if temp_node is None:
                 temp_node = Node()
-                current.data[w] = temp_node
+                current.children[w] = temp_node
             current = temp_node
         current.flag = True
-        
+
 
     def search(self, word):
         """
@@ -65,7 +65,7 @@ class Trie:
         """
         current = self.root
         for char in word:
-            current = current.data.get(char, None)
+            current = current.children.get(char, None)
             if current is None:
                 return False
         return current.flag
@@ -78,7 +78,7 @@ class Trie:
         """
         current = self.root
         for w in prefix:
-            current = current.data.get(w, None)
+            current = current.children.get(w, None)
             if current is None:
                 return False
         return True

@@ -6,8 +6,8 @@ Design a data structure that supports the following two operations:
 
 void addWord(word)
 bool search(word)
-search(word) can search a literal word or a regular expression string containing only letters a-z or .. 
-A . means it can represent any one letter.
+search(word) can search a literal word or a regular expression string containing only letters a-z
+or ".." . means it can represent any one letter.
 
 Example:
 
@@ -21,8 +21,6 @@ search("b..") -> true
 
 Note:
 You may assume that all words are consist of lowercase letters a-z.
-
-
 """
 
 
@@ -38,7 +36,7 @@ class WordDictionary:
         Initialize your data structure here.
         """
         self.root = TrieNode()
-        
+
 
     def addWord(self, word):
         """
@@ -65,7 +63,7 @@ class WordDictionary:
         self.result = False
         self.dfs(current, word)
         return self.result
-    
+
     def dfs(self, node, word):
         """ traverse nodes """
         if not word:

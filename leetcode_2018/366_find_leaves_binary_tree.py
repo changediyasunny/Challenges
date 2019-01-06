@@ -33,7 +33,7 @@ class Solution:
         """
         if root is None:
             return []
-        depths = {}
+        depths = {None: -1}
         stack = [(root, False)]
         while stack:
             node, visited = stack.pop()
@@ -41,17 +41,15 @@ class Solution:
                 continue
             if visited:
                 # do something
-                left_len = 0
-                right_len = 0
-                if node.left:
-                    left_len = depths[node.left] + 1
-                if node.right:
-                    right_len = depths[node.right] + 1
+                left_len = depths[node.left] + 1
+                right_len = depths[node.right] + 1
                 depths[node] = max(left_len, right_len)
             else:
                 stack.extend([(node, True), (node.left, False), (node.right, False)])
         final_result = {}
         for n, d in depths.items():
+            if n is None:
+                continue
             try:
                 final_result[d].append(n.val)
             except:

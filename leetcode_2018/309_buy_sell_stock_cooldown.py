@@ -1,11 +1,9 @@
 """
 309. Best Time to Buy and Sell Stock with Cooldown
 
-
 Say you have an array for which the ith element is the price of a given stock on day i.
-
-Design an algorithm to find the maximum profit. You may complete as many transactions as you like (ie, buy one and
-sell one share of the stock multiple times) with the following restrictions:
+Design an algorithm to find the maximum profit. You may complete as many transactions as
+you like (ie, buy one and sell one share of the stock multiple times) with the following restrictions:
 
 You may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).
 After you sell your stock, you cannot buy stock on next day. (ie, cooldown 1 day)
@@ -17,11 +15,14 @@ Explanation: transactions = [buy, sell, cooldown, buy, sell]
 
 
 Explanation:
-
 On any i-th day, we can buy, sell or cooldown
 
-buy[i]: The maximum profit can be made if the first i days end with buy or wait. E.g "buy, sell, buy" or "buy, cooldown, cooldown"
-sell[i]: The maximum profit can be made if the first i days end with sell or wait. E.g "buy, sell, buy, sell" or "buy, sell, cooldown, cooldown"
+buy[i]:
+The maximum profit can be made if the first i days end with buy or wait. E.g "buy, sell, buy" or "buy, cooldown, cooldown"
+
+sell[i]:
+The maximum profit can be made if the first i days end with sell or wait. E.g "buy, sell, buy, sell" or "buy, sell, cooldown, cooldown"
+
 price: prices[i - 1], which is the stock price of the i-th day
 
 To calculate sell[i]:
@@ -30,8 +31,7 @@ If we cooldown on the i-th day, the maximum profit is same as sell[i - 1] since 
 >> sell[i] is = MAX (buy[i - 1] + price, sell[i - 1])
 
 To calculate buy[i]:
-If we buy on the i-th day, the maximum profit is sell[i - 2] - price, because on the (i-1)th day we can only cooldown.
-If we cooldown on the i-th day, the maximum profit is same as buy[i - 1] since we did not do anything on the i-th day.
+If we buy on the i-th day, the maximum profit is sell[i - 2] - price, because on the (i-1)th day we can only cooldown. If we cooldown on the i-th day, the maximum profit is same as buy[i - 1] since we did not do anything on the i-th day.
 >> buy[i] is the larger one of (sell[i - 2] - price, buy[i - 1])
 
 """

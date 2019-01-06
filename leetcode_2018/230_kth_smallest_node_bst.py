@@ -25,6 +25,8 @@ Input: root = [5,3,6,2,4,null,null,1], k = 3
  1
 Output: 3
 
+What if the BST is modified (insert/delete operations) often and you need to find the kth
+smallest frequently? How would you optimize the kthSmallest routine?
 """
 
 # Definition for a binary tree node.

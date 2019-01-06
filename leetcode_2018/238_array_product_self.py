@@ -1,7 +1,8 @@
 """
 238. Product of Array Except Self
 
-Given an array nums of n integers where n > 1,  return an array output such that output[i] is equal to the product of all the elements of nums except nums[i].
+Given an array nums of n integers where n > 1,  return an array output such that output[i]
+is equal to the product of all the elements of nums except nums[i].
 
 Example:
 
@@ -18,7 +19,6 @@ class Solution:
         :rtype: List[int]
         """
         output = [1] * len(nums)
-        output[0] = 1
         for i in range(1, len(nums)):
             output[i] = output[i-1] * nums[i-1]
         print(output)

@@ -13,4 +13,21 @@ Explanation: Because there are two triplets which sums are less than 2:
              [-2,0,3]
 Follow up: Could you solve it in O(n2) runtime?
 
+running time: O(N^2) since i & k traverse twise
 """
+
+def sum_smaller(nums, target):
+    # we sort because we only need count of index triplets and not
+    # the actual indexes window
+    nums.sort()
+    count = 0
+    for k in range(len(nums)):
+        i = 0
+        j = k -1
+        while i < j:
+            if nums[i] + nums[j] + nums[k] < target:
+                count += j - i
+                i += 1
+            else:
+                j -= 1
+    return count

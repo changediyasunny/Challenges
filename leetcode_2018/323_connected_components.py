@@ -10,7 +10,7 @@ Input: n = 5 and edges = [[0, 1], [1, 2], [3, 4]]
 
      0          3
      |          |
-     1 --- 2    4 
+     1 --- 2    4
 
 Output: 2
 Example 2:
@@ -24,22 +24,19 @@ Input: n = 5 and edges = [[0, 1], [1, 2], [2, 3], [3, 4]]
 Output:  1
 
 """
-
-
-
 def countComponents(n, edges):
     """
     :type n: int
     :type edges: List[List[int]]
     :rtype: int
-    """     
+    """
     graph = collections.defaultdict(set)
     for i, j in edges:
         graph[i].add(j)
         graph[j].add(i)
     visited = set()
-    comps = []
-    
+    count = 0
+
     def DFS(u):
         visited.add(u)
         for v in graph[u]:
@@ -49,6 +46,5 @@ def countComponents(n, edges):
     for u in range(n):
         if u not in visited:
             DFS(u)
-            comps.append(u)
-    #print(comps)
-    return len(comps)
+            count += 1
+    return count

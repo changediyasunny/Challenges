@@ -32,11 +32,11 @@ class Solution:
         """
         if not prices:
             return 0
+        profit = 0
         minprice = prices[0]
-        maxprofit = 0
-        for i, n in enumerate(prices[1:], 1):
-            if n < minprice:
-                minprice = n
-            elif n - minprice > maxprofit:
-                maxprofit = n - minprice
-        return maxprofit
+        for i in range(1, len(prices)):
+            if prices[i] < minprice:
+                minprice = prices[i]
+            elif prices[i] - minprice > profit:
+                profit = prices[i] - minprice
+        return profit

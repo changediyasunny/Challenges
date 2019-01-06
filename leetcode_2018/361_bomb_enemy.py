@@ -1,8 +1,10 @@
 """
 361. Bomb Enemy
 
-Given a 2D grid, each cell is either a wall 'W', an enemy 'E' or empty '0' (the number zero), return the maximum enemies you can kill using one bomb.
-The bomb kills all the enemies in the same row and column from the planted point until it hits the wall since the wall is too strong to be destroyed.
+Given a 2D grid, each cell is either a wall 'W', an enemy 'E' or empty '0' (the number zero),
+return the maximum enemies you can kill using one bomb. The bomb kills all the enemies in the
+same row and column from the planted point until it hits the wall since the wall is too strong
+to be destroyed.
 Note: You can only put the bomb at an empty cell.
 
 Input: [["0","E","0","0"],["E","0","W","E"],["0","E","0","0"]]
@@ -15,6 +17,7 @@ E 0 W E
 
 Placing a bomb at (1,1) kills 3 enemies.
 
+running time: O(mn)
 """
 def bomb_enemy(grid):
     rows = len(grid)
@@ -48,6 +51,16 @@ def bomb_enemy(grid):
     print(col_hits)
     return result
 
-grid = [["0","E","0","0"],["E","0","W","E"],["0","E","0","0"]]
-grid = [['W','E','0','0','E'],['W','0','E','W','0'],['W','0','0','W','E'],['E','0','E','W','0'],['E','0','E','E','0']]
+grid = [
+    ["0","E","0","0"],
+    ["E","0","W","E"],
+    ["0","E","0","0"]
+]
+grid = [
+    ['W','E','0','0','E'],
+    ['W','0','E','W','0'],
+    ['W','0','0','W','E'],
+    ['E','0','E','W','0'],
+    ['E','0','E','E','0']
+]
 bomb_enemy(grid)

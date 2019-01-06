@@ -17,6 +17,7 @@ Input: root = [4,2,5,1,3], target = 3.714286
 
 Output: 4
 
+time: O(h)
 """
 # Definition for a binary tree node.
 class TreeNode:
@@ -58,4 +59,4 @@ def closestValue_it(root, target):
             diff = curDiff
             final_result = root.val
         root = root.left if target < root.val else root.right
-    return res
+    return final_result
