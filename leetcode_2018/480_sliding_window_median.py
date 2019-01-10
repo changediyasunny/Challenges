@@ -9,8 +9,7 @@ Examples:
 
 [2,3], the median is (2 + 3) / 2 = 2.5
 
-Given an array nums, there is a sliding window of size k which is moving from the very left of the array to the very right.
-You can only see the k numbers in the window. Each time the sliding window moves right by one position.
+Given an array nums, there is a sliding window of size k which is moving from the very left of the array to the very right. You can only see the k numbers in the window. Each time the sliding window moves right by one position.
 Your job is to output the median array for each window in the original array.
 
 For example,
@@ -31,7 +30,8 @@ def medianSlidingWindow(self, nums, k):
     lh,rh,rv = [],[],[]
     from heapq import heappush, heappop
     # create the initial left and right heap
-    for i,n in enumerate(nums[:k]): heappush(lh, (-n,i))
+    for i, n in enumerate(nums[:k]):
+        heappush(lh, (-n,i))
     for i in range(k-k//2):
         heappush(rh, (-lh[0][0], lh[0][1]))
         heappop(lh)

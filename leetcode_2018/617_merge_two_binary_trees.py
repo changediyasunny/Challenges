@@ -23,7 +23,7 @@ Merged tree:
 	  / \   \
 	 5   4   7
 
-Time complexity : O(n). We traverse over a total of nn nodes. Here, N refers to the smaller of
+Time complexity : O(n). We traverse over a total of n nodes. Here, N refers to the smaller of
 the number of nodes in the two trees.
 Space complexity : O(n). The depth of stack can grow upto N in case of a skewed tree.
 
