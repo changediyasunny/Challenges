@@ -3,26 +3,23 @@
 
 Strings A and B are K-similar (for some non-negative integer K) if we can swap the
 positions of two letters in A exactly K times so that the resulting string equals B.
-
 Given two anagrams A and B, return the smallest K for which A and B are K-similar.
 
 Example 1:
-
 Input: A = "ab", B = "ba"
 Output: 1
-Example 2:
 
+Example 2:
 Input: A = "abc", B = "bca"
 Output: 2
-Example 3:
 
+Example 3:
 Input: A = "abac", B = "baca"
 Output: 2
-Example 4:
 
+Example 4:
 Input: A = "aabc", B = "abca"
 Output: 2
-
 
 ###
 Problem-2:
@@ -51,6 +48,8 @@ becomes 1, then we should return false.
 
 The length of string s and t are guaranteed to be the same.
 
+time: 2^(N + W) where W is length of alphabet
+space: O(N * t) where N is length of string and t is time complexity given above
 """
 def kSimilarity(strs1, strs2, k):
     def neighbors(strs):

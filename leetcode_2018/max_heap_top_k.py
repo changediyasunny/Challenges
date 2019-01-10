@@ -1,16 +1,17 @@
 """
+Given a max heap as an array, return the top k elements. Do not modify heap or
+copy entire heap to a different data structure. Example:
 
-Given a max heap as an array, return the top k elements. Do not modify heap or copy entire heap to a different data structure. Example:
     15
   /    \
 13      12
 /  \    /
 10  8	9
 
-int[] arr = {15,13,12,10,8,9};
-List<Integer> peekTopK(int[] arr, int k)
-Expected output for k = 5 ==> [15,13,12,10,9]
+int[] arr = {15,13,12,10,8,9}, k = 5
+output: [15,13,12,10,9]
 
+Running Time: O(k log(k))
 """
 
 def priority_queue(temp_list):
