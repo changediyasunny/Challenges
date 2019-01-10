@@ -14,6 +14,7 @@ Input: "aaa"
 Output: 6
 Explanation: Six palindromic strings: "a", "a", "a", "aa", "aa", "aaa".
 
+time: O(N^2)
 """
 
 # Expand Around Center
