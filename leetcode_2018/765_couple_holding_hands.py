@@ -13,12 +13,11 @@ The couples' initial seating is given by row[i] being the value of the person wh
 initially sitting in the i-th seat.
 
 Example 1:
-
 Input: row = [0, 2, 1, 3]
 Output: 1
 Explanation: We only need to swap the second (row[1]) and third (row[2]) person.
-Example 2:
 
+Example 2:
 Input: row = [3, 2, 0, 1]
 Output: 0
 Explanation: All couples are already seated side by side.
@@ -28,20 +27,41 @@ Running Time: O(N^2)
 If a person is number x, their partner is x ^ 1, where ^ is the bitwise XOR operator.
 For each first person x = row[i] on a couch who is unpartnered, let's find their partner at row[j] and have them swap seats with row[i+1]
 """
+
+# time: O(N), space: O(N)
+def minSwaps(row):
+    swaps = 0
+    pos = {x:i for i, x in enumerate(row)}
+    for i in range(len(row)):
+        x = row[i]
+        # this condition changes based on array couples.
+        # if couple start from 0...n-1, => y = x+1 if x%2==0 else x-1
+
+        # here cpuple start form 1....n
+        y = x-1 if x%2 == 0 else x+1
+        j = pos[y]
+
+        if abs(i-j) > 1:
+            row[i+1], row[j] = row[j], row[i+1]
+            pos[row[i+1]] = i+1
+            pos[row[j]] = j
+            swaps += 1
+    return swaps
+
 # XOR of a number with 1 gives next number
-class Solution(object):
-    def minSwapsCouples(self, row):
-        ans = 0
-        for i in range(0, len(row), 2):
-            x = row[i]
-            if row[i+1] == x^1:
-                continue
-            ans += 1
-            for j in range(i+1, len(row)):
-                if row[j] == x^1:
-                    row[i+1], row[j] = row[j], row[i+1]
-                    break
-        return ans
+# time: O(N^2)
+def minSwapsCouples(self, row):
+    ans = 0
+    for i in range(0, len(row), 2):
+        x = row[i]
+        if row[i+1] == x^1:
+            continue
+        ans += 1
+        for j in range(i+1, len(row)):
+            if row[j] == x^1:
+                row[i+1], row[j] = row[j], row[i+1]
+                break
+    return ans
 
 
 """

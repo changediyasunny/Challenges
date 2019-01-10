@@ -19,6 +19,9 @@ words[i] has length in range [1, 10].
 prefix, suffix have lengths in range [0, 10].
 words[i] and prefix, suffix queries consist of lowercase letters only.
 
+Time Complexity: O(NK^2 + QK) where N is the number of words, K is the maximum length of a word,
+and Q is the number of queries.
+Space Complexity: O(NK^2) the size of the trie. 
 """
 # trie data structure
 class WordFilter:
