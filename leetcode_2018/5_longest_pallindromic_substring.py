@@ -1,33 +1,31 @@
-import pprint
-pp = pprint.PrettyPrinter(indent=4)
-
 """
-Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.
+5. Given a string s, find the longest palindromic substring in s. You may assume
+that the maximum length of s is 1000.
 
 Example 1:
-
 Input: "babad"
 Output: "bab"
 Note: "aba" is also a valid answer.
 
 Example 2:
-
 Input: "cbbd"
 Output: "bb"
 
 """
 
+import pprint
+pp = pprint.PrettyPrinter(indent=4)
 
 """ Expand around center:
 In fact, we could solve it in O(n^2) time using only constant space.
-We observe that a palindrome mirrors around its center. Therefore, a palindrome can be expanded from its center, and there 
-are only 2n-1 such centers.
-You might be asking why there are 2n-1 but not n centers? The reason is the center of a palindrome can be in between two letters. 
-Such palindromes have even number of letters (such as "abba") and its center are between the two 'b's.
+We observe that a palindrome mirrors around its center. Therefore, a palindrome
+can be expanded from its center, and there are only 2n-1 such centers.
+You might be asking why there are 2n-1 but not n centers? The reason is the center of
+a palindrome can be in between two letters. Such palindromes have even number of
+letters (such as "abba") and its center are between the two 'b's.
 
 time complexity: O(n^2)
 space complexity: O(1)
-
 """
 def longest_pallindrome_substring(strs):
     """ """

@@ -1,5 +1,4 @@
 """
-
 253. Meeting Rooms II
 
 Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],...] (si < ei), find the minimum number of conference rooms required.
@@ -24,8 +23,6 @@ being (NlogN) since extract-min operation on a heap takes O(logN).
 
 Space Complexity: O(N) because we construct the min-heap and that can contain N elements in the worst case as described
 above in the time complexity section. Hence, the space complexity is O(N).
-
-
 """
 
 

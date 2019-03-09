@@ -53,7 +53,7 @@ class Solution:
         result = 0
         for j, t in enumerate(tree):
             hashmap[t] += 1
-            if len(hashmap) >= 3:
+            while len(hashmap) >= 3:
                 hashmap[tree[i]] -= 1
                 if hashmap[tree[i]] == 0:
                     del hashmap[tree[i]]
