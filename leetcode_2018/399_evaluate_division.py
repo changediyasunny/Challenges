@@ -6,7 +6,7 @@ number (floating point number). Given some queries, return the answers. If the a
 
 Example:
 Given a / b = 2.0, b / c = 3.0.
-queries are: a / c = ?, b / a = ?, a / e = ?, a / a = ?, x / x = ? .
+queries are: a / c = ?, b / a = ?, a / e = ?, a / a = ?, x / x co= ? .
 return [6.0, 0.5, -1.0, 1.0, -1.0 ].
 
 According to the example above:

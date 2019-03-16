@@ -40,7 +40,7 @@ def kEmptyslots(flowers, k):
     pots = [0] * N
 
     for i in range(N):
-        position[flower[i]-1] = i + 1
+        pots[flower[i]-1] = i + 1
 
     result = float('inf')
     left = 0
@@ -56,7 +56,7 @@ def kEmptyslots(flowers, k):
 
         left = i
         right = left + k + 1
-    return result if res < float('inf') else -1
+    return result if result < float('inf') else -1
 
 flowers = [6,5,8,9,7,1,10,2,3,4]
 k = 2
