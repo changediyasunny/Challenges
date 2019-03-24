@@ -1,18 +1,16 @@
 """
 17. Letter Combinations of a Phone Number
 
-Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could represent.
-A mapping of digit to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.
+Given a string containing digits from 2-9 inclusive, return all possible letter combinations
+that the number could represent. A mapping of digit to letters (just like on the telephone buttons)
+is given below. Note that 1 does not map to any letters.
 
 Example:
-
 Input: "23"
 Output: ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"].
 
-
+Time and space: 3^N * 4^M
 """
-
-
 
 class Solution:
     def __init__(self):
@@ -35,7 +33,7 @@ class Solution:
         :rtype: List[str]
         """
         combinations = list()
-        
+
         def helper(strs, path):
             print(strs, path)
             if not strs:
@@ -45,7 +43,7 @@ class Solution:
             letters = self.d[first]
             for letter in letters:
                 helper(rest, path+letter)
-        
+
         helper(digits, "")
         return [] if digits == "" else combinations
 

@@ -19,7 +19,7 @@ Output: -1
 """
 
 
-def search(self, nums, target):
+def search(nums, target):
     """
     :type nums: List[int]
     :type target: int
@@ -49,3 +49,5 @@ def search(self, nums, target):
         else:
             high = mid - 1
     return -1
+
+print(search([4,5,6,7,0,1,2], 0))

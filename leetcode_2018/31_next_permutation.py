@@ -1,23 +1,19 @@
 """
 31. Next Permutation:
 
-Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers.
+Implement next permutation, which rearranges numbers into the lexicographically next greater
+permutation of numbers. If such arrangement is not possible, it must rearrange it as the lowest
+possible order (ie, sorted in ascending order).
 
-If such arrangement is not possible, it must rearrange it as the lowest possible order (ie, sorted in ascending order).
+The replacement must be in-place and use only constant extra memory. Here are some examples.
+Inputs are in the left-hand column and its corresponding outputs are in the right-hand column.
 
-The replacement must be in-place and use only constant extra memory.
+1,2,3 = 1,3,2
+3,2,1 = 1,2,3
+1,1,5 = 1,5,1
 
-Here are some examples. Inputs are in the left-hand column and its corresponding outputs are in the right-hand column.
-
-1,2,3 → 1,3,2
-3,2,1 → 1,2,3
-1,1,5 → 1,5,1
-
-
-Time complexity : O(n)O(n). In worst case, only two scans of the whole array are needed.
-
-Space complexity : O(1)O(1). No extra space is used. In place replacements are done.
-
+Time complexity : O(n). In worst case, only two scans of the whole array are needed.
+Space complexity : O(1). No extra space is used. In place replacements are done.
 
 Solution: ( to find next larger permutation)
 1. Find 1st decreasing element from right side of the list. A[i]
@@ -55,7 +51,6 @@ def nextPermutation(nums):
             j = j -1
         swap(nums, i, j)
     reverse(nums, i+1)
+    return nums
 
 print(nextPermutation([1,5,8,4,7,6,5,3,1]))
-
-

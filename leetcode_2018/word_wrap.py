@@ -6,6 +6,7 @@ space: O(n^2)
 time: O(n^2)
 
 """
+
 def word_wrap(input_strs, width):
     n = len(input_strs)
     cost = [[-1] * n for _ in range(n)]
@@ -19,11 +20,11 @@ def word_wrap(input_strs, width):
     for i in range(n):
         for j in range(i, n):
             if cost[i][j] < 0:
-                cost[i][j] = 99999
+                cost[i][j] = float("inf")
             else:
                 cost[i][j] = cost[i][j]**2
 
-    pp.pprint(cost)
+    print(cost)
     # find min cost
     mincost = [0] * n
     result = [0] * n
@@ -32,7 +33,7 @@ def word_wrap(input_strs, width):
         result[i] = n
         j = n-1
         while j > i:
-            if cost[i][j-1] == 9999 or cost[i][j-1] == -1:
+            if cost[i][j-1] == float("inf") or cost[i][j-1] == -1:
                 continue
             if mincost[i] > mincost[j] + cost[i][j-1]:
                 mincost[i] = mincost[j] + cost[i][j-1]
