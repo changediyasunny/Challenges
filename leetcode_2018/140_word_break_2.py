@@ -46,7 +46,7 @@ time: O(n^3) as two loops to fill dp array and one for appending liste
 space: O(n^3): length of dp & each value contains length of string
 """
 
-def wordBreak(s, wordDict):
+def wordBreak_error(s, wordDict):
     """
     :type s: str
     :type wordDict: List[str]
@@ -100,3 +100,7 @@ def wordBreak(s, wordDict):
 
         result_table.append(liste)
     return result_table[n]
+
+s = "catsanddog"
+wordDict = ["cat", "cats", "and", "sand", "dog"]
+wordBreak(s, wordDict)

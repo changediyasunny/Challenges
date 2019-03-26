@@ -49,24 +49,13 @@ def construct_dict(word_list):
                 d[s] = [word]
     return d
 
-def findLadders(self, beginWord, endWord, wordList):
+def findLadders(beginWord, endWord, wordList):
     """
     :type beginWord: str
     :type endWord: str
     :type wordList: List[str]
     :rtype: List[List[str]]
     """
-    def construct_dict(word_list):
-        d = {}
-        for word in word_list:
-            for i in range(len(word)):
-                s = word[:i] + "_" + word[i+1:]
-                try:
-                    d[s].append(word)
-                except:
-                    d[s] = [word]
-        return d
-
     def bfs_words(begin, end, dict_words):
         queue= [(begin, 1, [begin])]
         order = {}
@@ -80,7 +69,9 @@ def findLadders(self, beginWord, endWord, wordList):
                 elif result and len(steps) <= len(result[0]):
                     result.append(steps)
             if word in visited:
-                if word in order and level > order[word]:
+                # this checks if word is being generated at lower level
+                # if yes, then discard it for shortest path
+                if level > order[word]:
                     continue
             visited.add(word)
             order[word] = level
@@ -98,4 +89,4 @@ def findLadders(self, beginWord, endWord, wordList):
 beginWord = 'hit'
 endWord = 'cog'
 wordList = ["hot","dot","dog","lot","log","cog"]
-findLadders(beginWord, endWord, wordList)
+print(findLadders(beginWord, endWord, wordList))
