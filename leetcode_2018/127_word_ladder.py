@@ -58,21 +58,20 @@ def construct_dict(word_list):
 # Queue: BFS
 def ladderLength(beginWord, endWord, wordList):
     def bfs_words(begin, end, dict_words):
-        queue = deque([(begin, 1)])
+        queue = [(begin, 1)]
         visited = set()
         while queue:
-            word, steps = queue.popleft()
-            if word in visited:
-                continue
-            visited.add(word)
-            if word == end:
-                return steps
+            word, steps = queue.pop(0)
             for i in range(len(word)):
                 s = word[:i] + "_" + word[i+1:]
                 neigh_words = dict_words.get(s, [])
                 for neigh in neigh_words:
+                    if neigh == endWord:
+                        return steps + 1
                     if neigh not in visited:
+                        visited.add(word)
                         queue.append((neigh, steps + 1))
+                dict_words[s] = []
         return 0
     d = construct_dict(wordList)
     return bfs_words(beginWord, endWord, d)
@@ -85,25 +84,22 @@ def word_ladder(beginword, endword, word_list):
         stack = [(begin, 1)]
         while stack:
             word, steps = stack.pop()
-            if word in visited:
-                continue
-            visited.add(word)
-            if word == end:
-                return steps
             for i in range(len(word)):
                 s = word[:i] + '_' + word[i+1:]
                 kids = hashmap.get(s, [])
                 for kid in kids:
+                    if kid == end:
+                        return steps + 1
                     if kid not in visited:
                         stack.append((kid, steps+1))
-        # end
-        return steps
+                hashmap[s] = []
+        return 0
 
     hashmap = construct_dict(word_list)
     return dfs(beginword, endword, hashmap)
 
 # using label strategy
-def ladderLength(beginWord, endWord, wordList):
+def ladder_label(beginWord, endWord, wordList):
 
     d = construct_dict(wordList)
     thisLevel = [beginWord]
@@ -129,4 +125,5 @@ def ladderLength(beginWord, endWord, wordList):
 beginWord = 'hit'
 endWord = 'cog'
 wordList = ["hot","dot","dog","lot","log","cog"]
-word_ladder(beginWord, endWord, wordList)
+print(ladderLength(beginWord, endWord, wordList))
+print(word_ladder(beginWord, endWord, wordList))
