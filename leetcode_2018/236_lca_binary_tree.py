@@ -54,7 +54,7 @@ class Solution(object):
             if node.right:
                 parents[node.right] = node
                 stack.append(node.right)
-
+        print(parents)
         temp_list = []
         while p:
             temp_list.append(p)
@@ -62,3 +62,14 @@ class Solution(object):
         while q not in temp_list:
             q = parents[q]
         return q
+
+root = TreeNode(3)
+root.left = TreeNode(5)
+root.right = TreeNode(1)
+root.left.left = TreeNode(6)
+root.left.right = TreeNode(2)
+root.left.right.left = TreeNode(7)
+root.left.right.right = TreeNode(4)
+
+obj = Solution()
+print(obj.lowestCommonAncestor(root, 5, 1))
