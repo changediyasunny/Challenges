@@ -58,7 +58,7 @@ def rob(self, root):
         else:
             rob_root = node.val + data[node.left][1] + data[node.right][1]
             dont_rob_root = max(data[node.left]) + max(data[node.right])
-            data[node] = max(rob_root, dont_rob_root)
+            data[node] = (rob_root, dont_rob_root)
     return max(data[root])
 
 # Recursive
