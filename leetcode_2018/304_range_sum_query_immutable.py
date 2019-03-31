@@ -16,6 +16,10 @@ sumRegion(2, 1, 4, 3) -> 8
 sumRegion(1, 1, 2, 2) -> 11
 sumRegion(1, 2, 2, 4) -> 12
 
+Time complexity : O(1) time per query, O(mn) time pre-computation. The pre-computation in the
+constructor takes O(mn) time. Each sumRegion query takes O(1) time.
+
+Space complexity : O(mn). The algorithm uses O(mn) space to store the cumulative region sum.
 """
 
 class NumMatrix:
