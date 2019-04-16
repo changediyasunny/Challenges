@@ -1,10 +1,10 @@
 """
 648. Replace Words
 
-In English, we have a concept called root, which can be followed by some other words to form another longer word - 
-let's call this word successor. For example, the root an, followed by other, which can form another word another.
+In English, we have a concept called root, which can be followed by some other words to form another longer word - let's call this word successor. For example, the root an, followed by other, which can form another word another.
+"an" --> "other" == "another"
 
-Now, given a dictionary consisting of many roots and a sentence. You need to replace all the successor in the 
+Now, given a dictionary consisting of many roots and a sentence. You need to replace all the successor in the
 sentence with the root forming it. If a successor has many roots can form it, replace it with the root with the shortest length.
 
 You need to output the sentence after the replacement.
@@ -44,12 +44,10 @@ class Solution:
         # Insert into Trie DS
         for word in wordDict:
             self.insert(word)
-        
+
         data_list = sentence.split()
-        print(data_list)
         for word in data_list:
             flag = self.search(word)
-            print(word, flag)
             if flag is None:
                 result.append(word)
             else:
@@ -58,10 +56,8 @@ class Solution:
 
     def search(self, word):
         node = self.root
-        #print("=========== %s ============" %word)
         for w in word:
             if w not in node.data:
-                #print("=======> %s   & %s" %(w, node.prefix))
                 break
             elif node.prefix is not None:
                 return node.prefix
