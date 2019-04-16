@@ -26,6 +26,7 @@ Window position                Median
 Therefore, return the median sliding window as [1,-1,-1,3,5,6].
 
 """
+
 def medianSlidingWindow(self, nums, k):
     lh,rh,rv = [],[],[]
     from heapq import heappush, heappop
