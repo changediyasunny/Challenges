@@ -48,7 +48,7 @@ class Codec:
         if not data:
             return
         def helper(node, i):
-            while i < self.new_data:
+            while i < len(self.new_data):
                 tmp = self.new_data[i]
                 if tmp.isdigit():
                     # node is here
