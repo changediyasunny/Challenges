@@ -17,18 +17,13 @@ space: O(N)
 """
 
 def minAreaRect(points):
-    graph = defaultdict(list)
-    for x, y in points:
-        graph[x].append(y)
-        graph[y].append(x)
-
-    ans = float('-inf')
-    points.sort(key=lambda x:x[0])
-    for i in range(len(points)):
-        for j in range(i+1, len(points)):
-            p = points[i]
-            q = points[j]
-            if p[0] != q[0] and p[1] != q[1] and q[1] in graph[p[0]] and p[1] in graph[q[0]]:
+    ans = float('inf')
+    # need set object for different lookup
+    S = set(map(tuple, points))
+    for j, p2 in enumerate(points):
+        for i in range(j):
+            p1 = points[i]
+            if p1[0] != p2[0] and p1[1] != p2[1] and (p1[0], p2[1]) in S and (p2[0], p1[1]) in S:
                 # chekc for diagonals and then find top-left & right points
-                ans = min(ans, abs(p[0]-q[0])*abs(p[1]*q[1]))
-    return ans if ans != float('-inf') else 0
+                ans = min(ans, abs(p1[0]-p2[0])*abs(p1[1]- p2[1]))
+    return ans if ans < float('inf') else 0

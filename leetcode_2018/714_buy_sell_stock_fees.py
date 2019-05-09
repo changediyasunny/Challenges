@@ -20,6 +20,16 @@ Selling at prices[5] = 9
 The total profit is ((8 - 1) - 2) + ((9 - 4) - 2) = 8.
 
 running time: O(N)
+
+At the end of the i-th day, we maintain "sell", the maximum profit we could have if we did
+not have a share of stock, and "buy", the maximum profit we could have if we owned a share of stock.
+
+To transition from the i-th day to the i+1-th day, we either
+>> sell our stock "sell" = max("sell", "buy" + prices[i] - fee) or
+>> buy a stock "buy" = max("buy", "sell" - prices[i]). At the end, we want to return "sell".
+We can transform "sell" first without using temporary variables because selling and buying
+on the same day can't be better than just continuing to "buy" the stock.
+
 """
 
 
@@ -32,9 +42,9 @@ class Solution:
         """
         if not prices:
             return 0
-        cash = 0
-        hold = -prices[0]
+        sell = 0
+        buy = -prices[0]
         for i in range(1, len(prices)):
-            cash = max(cash, hold + prices[i] - fee)
-            hold = max(hold, cash-prices[i])
-        return cash
+            sell = max(sell, buy + prices[i] - fee)
+            buy = max(buy, sell-prices[i])
+        return sell
