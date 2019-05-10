@@ -37,8 +37,8 @@ def minSwaps(row):
         # this condition changes based on array couples.
         # if couple start from 0...n-1, => y = x+1 if x%2==0 else x-1
 
-        # here cpuple start form 1....n
-        y = x-1 if x%2 == 0 else x+1
+        # here couple start form 0....n
+        y = x+1 if x%2 == 0 else x-1
         j = pos[y]
 
         if abs(i-j) > 1:
