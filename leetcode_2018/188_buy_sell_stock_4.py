@@ -20,6 +20,11 @@ Explanation: Buy on day 2 (price = 2) and sell on day 3 (price = 6), profit = 6-
 DP running time: O(days * transctions)
 https://www.youtube.com/watch?v=oDhu5uGq_ic
 
+T[tr][dy] = max {
+    T[tr][dy-1] # not transacting on day "dy"
+    # best you can get by completing transaction on "dy"th day
+    ( price[dy]-price[m] ) + T[tr-1][m] # one less transaction if we transact on "dy"th day
+}
 """
 def maxProfit_dp(prices, k=2):
     """
@@ -30,8 +35,6 @@ def maxProfit_dp(prices, k=2):
     if not prices:
         return 0
     days = len(prices)
-    trans = k + 1
-
     dp = [[0] * days for _ in range(k+1)]
     for tr in range(1, k+1):
         maxdiff = -prices[0]
@@ -40,7 +43,6 @@ def maxProfit_dp(prices, k=2):
             dp[tr][dy] = max(dp[tr][dy-1], maxdiff + prices[dy])
             maxdiff = max(maxdiff, dp[tr-1][dy] - prices[dy])
             # max([(prices[day] - prices[m] + T[transaction - 1][m]) for m in range(day)]))
-    pp.pprint(dp)
     return dp[-1][-1]
 
 def maxProfit(prices, k=2):

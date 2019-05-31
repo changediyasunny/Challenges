@@ -31,6 +31,8 @@ def medianSlidingWindow(self, nums, k):
     lh,rh,rv = [],[],[]
     from heapq import heappush, heappop
     # create the initial left and right heap
+    # lh: max-heap storing lower elements from nums
+    # rh: min-heap storing higher elements from nums
     for i, n in enumerate(nums[:k]):
         heappush(lh, (-n,i))
     for i in range(k-k//2):

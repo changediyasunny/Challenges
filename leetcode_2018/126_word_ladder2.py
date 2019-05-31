@@ -69,9 +69,7 @@ def findLadders(beginWord, endWord, wordList):
                 elif result and len(steps) <= len(result[0]):
                     result.append(steps)
             if word in visited:
-                # this checks if word is being generated at lower level
-                # if yes, then discard it for shortest path
-                if level > order[word]:
+                if word in order and level > order[word]:
                     continue
             visited.add(word)
             order[word] = level
