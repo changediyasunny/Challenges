@@ -23,7 +23,7 @@ class Solution:
         """
         if not root:
             return
-        head = prev = Node(0, None, None)
+        head = prev = None
         curr = root
         stack = []
         while stack or curr:
