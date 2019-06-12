@@ -58,40 +58,33 @@ print(longest_pallindrome_substring('pqabbars'))
 """
 def long_pall_substring(strs):
     """ """
-    n = len(strs)
-    table = [ [0 for x in range(n)] for y in range(n)]
+    if not s:
+        return ""
 
-    # substrings of length 1
+    N = len(s)
+    dp = [[False for i in range(N)] for _ in range(N)]
     maxlen = 1
-    i = 0
-    while i<n:
-        table[i][i] = 1
-        i += 1
-    # sunstrings of length 2
+    # for lenght of 1
+    for i in range(N):
+        dp[i][i] = True
+
     start = 0
-    i = 0
-    while i < n-1:
-        if strs[i] == strs[i+1]:
-            table[i][i+1] = 1
+    for i in range(N-1):
+        if s[i] == s[i+1]:
+            dp[i][i+1] = True
             start = i
             maxlen = 2
-        i += 1
-    # substrings greater length
-    k = 3
-    while k <= n:
-        i = 0
-        while i < (n-k+1):
-            # end index
-            j = i+k-1
-            if table[i+1][j-1] and strs[i] == strs[j]:
-                table[i][j] = 1
+
+    # of all lengths
+    for k in range(3, N+1):
+        for i in range(N-k+1):
+            j = i + k -1
+            if dp[i+1][j-1] and s[i] == s[j]:
+                dp[i][j] = True
                 if k > maxlen:
                     start = i
                     maxlen = k
-            i = i + 1
-        k = k + 1
-    #pp.pprint(table)
-    return strs[start: start+maxlen]
+    return s[start:start+maxlen]
 
 print("Dynamic Programming:")
 print(long_pall_substring('pqabbars'))
