@@ -18,6 +18,11 @@ Return the following binary tree:
   9  20
     /  \
    15   7
+
+(a) Inorder (Left, Root, Right)
+(b) Preorder (Root, Left, Right)
+(c) Postorder (Left, Right, Root)
+
 """
 
 # Definition for a binary tree node.
@@ -27,7 +32,7 @@ class TreeNode:
         self.left = None
         self.right = None
 
-class Solution:
+class Solution(object):
     def buildTree(self, preorder, inorder):
         """
         :type preorder: List[int]
@@ -36,22 +41,18 @@ class Solution:
         """
         if not inorder:
             return None
-        stack = []
         prev = None
-        root = TreeNode(preorder[0])
-        stack.append(root)
-        preorder = preorder[1:]
+        root = TreeNode(preorder.pop(0))
+        stack = [root]
         while preorder:
-            while stack and inorder[0] == stack[-1].val:
+            while stack and stack[-1].val == inorder[0]:
                 prev = stack.pop()
-                inorder = inorder[1:]
-            newNode = TreeNode(preorder[0])
-            preorder = preorder[1:]
+                tmp = inorder.pop(0)
+            curr = TreeNode(preorder.pop(0))
             if prev is not None:
-                prev.right = newNode
+                prev.right = curr
             elif stack:
-                currTop = stack[-1]
-                currTop.left = newNode
-            stack.append(newNode)
+                stack[-1].left = curr
+            stack.append(curr)
             prev = None
         return root
