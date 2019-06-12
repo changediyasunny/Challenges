@@ -16,7 +16,7 @@ Explanation: Intervals [1,4] and [4,5] are considerred overlapping.
 
 
 Time complexity : O(nlgn)
-Other than the sort invocation, we do a simple linear scan of the list, so the runtime is dominated by the O(nlgn) 
+Other than the sort invocation, we do a simple linear scan of the list, so the runtime is dominated by the O(nlgn)
 complexity of sorting.
 
 Space complexity : O(1) or O(n)
@@ -24,7 +24,22 @@ If we can sort intervals in place, we do not need more than constant additional 
 
 
 """
-
+# inputs changed as of April 15th
+class Solution(object):
+    def merge(self, intervals):
+        """
+        :type intervals: List[List[int]]
+        :rtype: List[List[int]]
+        """
+        intervals.sort(key=lambda x:x[0])
+        merged = []
+        for interval in intervals:
+            if not merged or interval[0] > merged[-1][1]:
+                # insert
+                merged.append(interval)
+            else:
+                merged[-1][1] = max(interval[1], merged[-1][1])
+        return merged
 
 def merge(intervals):
     """
