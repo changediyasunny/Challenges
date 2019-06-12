@@ -19,11 +19,13 @@ Return the following binary tree:
    15   7
 
 
-The core idea is: Starting from the last element of the postorder and inorder array, we put elements from postorder array to a stack and
-each one is the right child of the last one until an element in postorder array is equal to the element on the inorder array. Then,
-we pop as many as elements we can from the stack and decrease the mark in inorder array until the peek() element is not equal to the mark
-value or the stack is empty. Then, the new element that we are gonna scan from postorder array is the left child of the last element we
-have popped out from the stack.
+The core idea is: Starting from the last element of the postorder and inorder array,
+we put elements from postorder array to a stack and each one is the right child of the
+last one until an element in postorder array is equal to the element on the inorder array.
+Then, we pop as many as elements we can from the stack and decrease the mark in inorder array
+until the peek() element is not equal to the mark value or the stack is empty. Then, the new
+element that we are gonna scan from postorder array is the left child of the last element we have
+popped out from the stack.
 
 (a) Inorder (Left, Root, Right)
 (b) Preorder (Root, Left, Right)
