@@ -27,6 +27,11 @@ class Solution:
         :type lists: List[ListNode]
         :rtype: ListNode
         """
+
+        if not lists:
+            # adding this to validate input lists == []
+            return
+
         k = len(lists)
         if not k:
             return lists
@@ -50,3 +55,33 @@ class Solution:
         else:
             temp.next = l1
         return head.next
+
+
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+# Running TIme: O(n log k)
+class Solution(object):
+    def mergeKLists(self, lists):
+        """
+        :type lists: List[ListNode]
+        :rtype: ListNode
+        """
+        result = []
+        heap = []
+        if not lists:
+            return
+        for i in range(len(lists)):
+            if lists[i]:
+                node = lists[i]
+                heapq.heappush(heap, (node.val, node))
+
+        while heap:
+            curr = heapq.heappop(heap)
+            result.append(curr[0])
+            if curr[1].next:
+                heapq.heappush(heap, (curr[1].next.val, curr[1].next))
+        return result
