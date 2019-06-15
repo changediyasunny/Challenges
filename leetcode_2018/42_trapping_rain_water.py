@@ -19,6 +19,28 @@ Time complexity: O(n).
 Space complexity: O(n) extra space. Additional O(n) space for left_max and right_max arrays
 """
 
+# O(N) & O(1) solution
+class Solution(object):
+    def trap(self, height):
+        """
+        :type height: List[int]
+        :rtype: int
+        """
+        left = right = water = 0
+        i = 0
+        j = len(height) - 1
+        while i <= j:
+            left = max(left, height[i])
+            right = max(right, height[j])
+            while i <= j and height[i] <= left <= right:
+                water += left - height[i]
+                i += 1
+            while i <= j and height[j] <= right <= left:
+                water += right - height[j]
+                j -= 1
+        return water
+
+# O(N) & O(N) solution
 def trap(height):
     """
     :type height: List[int]
@@ -47,7 +69,7 @@ def trap(height):
 
     # Fill right array
     right[n-1] = height[n-1]
-    for i in range(n-2, -1, -1): 
+    for i in range(n-2, -1, -1):
         right[i] = max(right[i+1], height[i]);
 
     # Calculate the accumulated water element by element
@@ -56,7 +78,6 @@ def trap(height):
     # bar will be equal to min(left[i], right[i]) - arr[i] .
     for i in range(0, n):
         water += min(left[i],right[i]) - height[i]
-
     return water
 
 def trap(self, height):
