@@ -23,75 +23,58 @@ word into the trie (because we are doing isPalindrome checks that cost O(k) at e
 also k^2 work to search the trie
 
 """
-import sys, os
-from collections import defaultdict
+def ispall(word):
+    return word == word[::-1]
 
-def isPalld(word):
-    # print("word for pall check: %s" %word)
-    if len(word) == 0 or len(word) == 1:
-        return True
-    return word[0] == word[-1] and isPalld(word[1:-1])
-
-class Trie:
+class Trie(object):
     def __init__(self):
-        self.paths = defaultdict(Trie)
-        self.isWordEnd = -1
+        self.paths = collections.defaultdict(Trie)
         self.restpall = []
+        self.isEnd = -1
 
-    def insert(self, word, index):
+    def insert(self, word, idx):
         current = self
-        # print(current.paths)
-        # print("===============================")
-        for j, char in enumerate(reversed(word)):
-            # print(j, char)
-            if isPalld(word[ 0: len(word)-j ]):
-                # print("\t=====>%s" %word[0:len(word)-j])
-                current.restpall.append(index)
-            current = current.paths[char]
-        current.isWordEnd = index
+        for i, ch in enumerate(reversed(word)):
+            if ispall(word[0 : len(word)-i]):
+                current.restpall.append(idx)
+            current = current.paths[ch]
+        current.isEnd = idx
 
-# create TRIE DS
-def makeTrie(word_list):
-    current = Trie()
-    for index, word in enumerate(word_list):
-        # print("===== %s ======" %word)
-        current.insert(word, index)
-    return current
+class Solution(object):
+    def palindromePairs(self, words):
+        """
+        :type words: List[str]
+        :rtype: List[List[int]]
+        """
+        # create Trie DS
+        current = Trie()
+        for i, word in enumerate(words):
+            current.insert(word, i)
 
-def get_pallindrome(node, word, index):
-    output = []
-    while word:
-        # print(node.paths.keys())
-        if node.isWordEnd >= 0:
-            # print("===word==> %s" %word)
-            if isPalld(word):
-                output.append(node.isWordEnd)
-        if not word[0] in node.paths:
-            return output
-        node = node.paths[word[0]]
-        word = word[1:]
+        result = []
+        for i, word in enumerate(words):
+            indexes = self.get_pairs(current, word, i)
+            result.extend([[i,c] for c in indexes if i != c])
+        return result
 
-    if node.isWordEnd >=0:
-        # print("==paths===> %s" %node.paths.keys())
-        # print("==isWordEnd===> %s" %node.isWordEnd)
-        output.append(node.isWordEnd)
-    # print("==restPall===> %s" %node.restpall)
-    output.extend(node.restpall)
-    return output
+    def get_pairs(self, node, word, idx):
+        output = []
+        while word:
+            if node.isEnd >= 0:
+                if ispall(word):
+                    # needed if one of word ends in the middle of another word
+                    # in True. Eg. a & ppa
+                    output.append(node.isEnd)
+            if word[0] not in node.paths:
+                return output
+            node = node.paths[word[0]]
+            word = word[1:]
 
-def palindromePairs(words):
-    """
-    :type words: List[str]
-    :rtype: List[List[int]]
-    """
-    current = makeTrie(words)
-    output = []
-    # print("============================")
-    for i, word in enumerate(words):
-        # print("\n .......... %s .........." %word)
-        index_lists = get_pallindrome(current, word, i)
-        output.extend([[i, c] for c in index_lists if i != c ])
-    return output
+        if node.isEnd >= 0:
+            # if actual single word ends
+            output.append(node.isEnd)
+        output.extend(node.restpall)
+        return output
 
 # words = ["abcd","dcba","lls","s","sssll"]
 # words = ["bat","tab","cat"]
