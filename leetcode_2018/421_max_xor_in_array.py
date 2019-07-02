@@ -11,6 +11,8 @@ Input: [3, 10, 5, 25, 2, 8]
 Output: 28
 
 Explanation: The maximum result is 5 ^ 25 = 28.
+>>000101
+>>011001
 
 Time: O(n)
 

@@ -38,6 +38,7 @@ class Solution(object):
         node = head
         while True:
             if node.val > node.next.val and (insertVal <= node.next.val or insertVal >= node.val):
+                # We have reached last node in list and 1-->2-->3-->[1]
                 # if new value is either 1st element
                 # or last element in sorted list
                 break

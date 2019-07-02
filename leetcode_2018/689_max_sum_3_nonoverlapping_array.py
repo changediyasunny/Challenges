@@ -40,7 +40,7 @@ class Solution(object):
                 best = i
             right[i] = best
         ans = None
-        for j in xrange(K, len(W) - K):
+        for j in range(K, len(W) - K):
             i, k = left[j-K], right[j+K]
             if ans is None or (W[i] + W[j] + W[k] >
                     W[ans[0]] + W[ans[1]] + W[ans[2]]):
@@ -55,9 +55,9 @@ class Solution(object):
         :rtype: List[int]
         """
         n = len(nums)
-        p = sum(nums[i] for i in range(k))
-        q = sum(nums[i] for i in range(k, 2*k))
-        r = sum(nums[i] for i in range(2*k, 3*k))
+        p = sum(nums[:k])
+        q = sum(nums[k:2*k])
+        r = sum(nums[2*k:3*k])
 
         prev_p = p
         p_ind = [0]
