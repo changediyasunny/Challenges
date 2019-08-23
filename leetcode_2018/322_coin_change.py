@@ -15,6 +15,34 @@ Input: coins = [2], amount = 3
 Output: -1
 
 """
+# BFS Solution
+class Solution(object):
+    def coinChange(self, coins, amount):
+        """
+        :type coins: List[int]
+        :type amount: int
+        :rtype: int
+        """
+        if amount == 0:
+            return 0
+        visited = set()
+        thisLevel = [0]
+        count = 0
+        while thisLevel:
+            nextLevel = []
+            count += 1
+            for val in thisLevel:
+                for c in coins:
+                    next_val = val + c
+                    if next_val == amount:
+                        return count
+                    elif next_val <= amount:
+                        if next_val not in visited:
+                            visited.add(next_val)
+                            nextLevel.append(next_val)
+            thisLevel = nextLevel
+        return -1
+
 
 class Solution(object):
     def coinChange(self, coins, amount):

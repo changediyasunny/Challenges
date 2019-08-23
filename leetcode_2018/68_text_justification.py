@@ -90,15 +90,15 @@ class Solution(object):
         :type maxWidth: int
         :rtype: List[str]
         """
-        res, cur, num_of_letters = [], [], 0
+        res, spaces, num_of_letters = [], [], 0
         for w in words:
-            if num_of_letters + len(w) + len(cur) > maxWidth:
+            if num_of_letters + len(w) + len(spaces) > maxWidth:
                 for i in range(maxWidth - num_of_letters):
                     # this is tricky to add spaces based off 0 & 1
-                    # "or 1 " is taken for len(cur) == 1
-                    cur[i%(len(cur)-1 or 1)] += ' '
-                res.append(''.join(cur))
-                cur, num_of_letters = [], 0
-            cur += [w]
+                    # "or 1 " is taken for len(spaces) == 1
+                    spaces[i%(len(spaces)-1 or 1)] += ' '
+                res.append(''.join(spaces))
+                spaces, num_of_letters = [], 0
+            spaces += [w]
             num_of_letters += len(w)
-        return res + [' '.join(cur).ljust(maxWidth)]
+        return res + [' '.join(spaces).ljust(maxWidth)]

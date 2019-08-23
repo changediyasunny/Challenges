@@ -13,25 +13,14 @@ Time and space: 3^N * 4^M
 """
 
 class Solution:
-    def __init__(self):
-        self.d = {
-            '0': '',
-            '1': '',
-            '2': 'abc',
-            '3': 'def',
-            '4': 'ghi',
-            '5': 'jkl',
-            '6': 'mno',
-            '7': 'pqrs',
-            '8': 'tuv',
-            '9': 'wxyz'
-        }
-
     def letterCombinations(self, digits):
         """
         :type digits: str
         :rtype: List[str]
         """
+        self.d = {'0': '','1': '','2': 'abc','3': 'def','4': 'ghi','5': 'jkl',
+        '6': 'mno','7': 'pqrs','8': 'tuv','9': 'wxyz'}
+
         combinations = list()
 
         def helper(strs, path):
@@ -47,5 +36,18 @@ class Solution:
         helper(digits, "")
         return [] if digits == "" else combinations
 
-obj = Solution()
-print(obj.letterCombinations("23"))
+
+class Solution:
+    def letterCombinations(self, digits: str) -> List[str]:
+        self.data = {"1":"", "2":"abc", "3":"def", "4":"ghi", "5":"jkl", "6":"mno", "7":"pqrs","8":"tuv","9":"wxyz","0":" "}
+        if not digits:
+            return []
+        result = [""]
+        for d in digits:
+            nextLevel = []
+            letters = self.data[d]
+            for let in letters:
+                for strs in result:
+                    nextLevel.append(strs+let)
+            result = nextLevel
+        return result

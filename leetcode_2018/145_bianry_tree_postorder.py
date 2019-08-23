@@ -13,6 +13,7 @@ Input: [1,null,2,3]
 
 Output: [3,2,1]
 
+left --> right --> root
 """
 
 # Definition for a binary tree node.

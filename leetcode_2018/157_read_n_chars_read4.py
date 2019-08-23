@@ -16,7 +16,7 @@ class Solution(object):
             buf4 = [''] * 4
             l = read4(buf4)
             if not l:
-                return ind
+        exit        return ind
 
             for i in range(min(l, n)):
                 buf[ind] = buf4[i]

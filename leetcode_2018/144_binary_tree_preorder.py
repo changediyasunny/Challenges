@@ -15,6 +15,8 @@ Output: [1,2,3]
 
 Running Time: O(N)
 Space: O(N)
+
+root --> left --> right
 """
 
 
