@@ -1,4 +1,5 @@
 """
+
 Problem: 1
 Let's say you're an environmental engineer trying to assist in laying out infrastructure
 in some village. The village has N houses, each which needs a water supply.
