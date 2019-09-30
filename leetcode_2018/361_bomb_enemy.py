@@ -27,7 +27,6 @@ def bomb_enemy(grid):
     col_hits = [0] * colmns
     for i in range(rows):
         for j in range(colmns):
-            print(i, j)
             if grid[i][j] == 'W':
                 continue
             if j == 0 or grid[i][j-1] == 'W':
@@ -37,18 +36,14 @@ def bomb_enemy(grid):
                     if grid[i][k] == 'E':
                         rowHits += 1
                     k += 1
-                print(">>row hits: %s" %rowHits)
             if i == 0 or grid[i-1][j] == 'W':
                 k = i
                 while k < rows and grid[k][j] != 'W':
                     if grid[k][j] == 'E':
                         col_hits[j] += 1
                     k += 1
-                print(">> col hits: %s" %col_hits)
             if grid[i][j] == '0':
                 result = max(result, rowHits + col_hits[j])
-            print("=============")
-    print(col_hits)
     return result
 
 grid = [

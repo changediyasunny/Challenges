@@ -34,17 +34,16 @@ def invertTree(self, root):
     :type root: TreeNode
     :rtype: TreeNode
     """
-    import queue
-    que = queue.Queue()
+    stack = []
     if root is not None:
-        que.put(root)
-    while not que.empty():
-        curr = que.get()
+        stack.append(root)
+    while stack:
+        curr = stack.pop(0)
         temp = curr.left
         curr.left = curr.right
         curr.right = temp
         if curr.left is not None:
-            que.put(curr.left)
+            stack.append(curr.left)
         if curr.right is not None:
-            que.put(curr.right)
+            stack.append(curr.right)
     return root

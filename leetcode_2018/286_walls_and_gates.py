@@ -40,7 +40,8 @@ class Solution(object):
                 if not r:
                     stack.append((i, j))
 
-        for i, j in stack:
+        while stack:
+            i, j = stack.pop(0)
             for m, n in [(i+1, j), (i-1, j), (i, j-1), (i, j+1)]:
                 if 0<= m < len(rooms) and 0<= n < len(rooms[0]) and rooms[m][n]>2**30:
                     rooms[m][n] = rooms[i][j] + 1

@@ -20,7 +20,9 @@ Explanation: As 'd' comes after 'l' in this language, then words[0] > words[1], 
 Example 3:
 Input: words = ["apple","app"], order = "abcdefghijklmnopqrstuvwxyz"
 Output: false
-Explanation: The first three characters "app" match, and the second string is shorter (in size.) According to lexicographical rules "apple" > "app", because 'l' > '∅', where '∅' is defined as the blank character which is less than any other character (More info).
+Explanation: The first three characters "app" match, and the second string is shorter (in size.)
+According to lexicographical rules "apple" > "app", because 'l' > '∅', where '∅' is defined as the
+blank character which is less than any other character (More info).
 
 Running TIme: O(C) where C = total content of words
 """

@@ -60,3 +60,47 @@ class Solution(object):
             trav = m
             fast = n
         return head
+
+
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution(object):
+    def reorderList(self, head):
+        """
+        :type head: ListNode
+        :rtype: None Do not return anything, modify head in-place instead.
+        """
+        def reverse_list(node):
+            prev = None
+            while node:
+                m = node.next
+                node.next = prev
+                prev = node
+                node = m
+            return prev
+
+
+        if head is None or head.next is None:
+            return
+
+        slow = head
+        fast = head.next
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+
+        head2 = reverse_list(slow.next)
+        slow.next = None
+        p = head
+        q = head2
+        while q:
+            m = p.next
+            n = q.next
+            p.next = q
+            q.next = m
+            p = m
+            q = n

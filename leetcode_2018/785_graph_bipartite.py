@@ -33,6 +33,10 @@ The graph looks like this:
 3----2
 We cannot find a way to divide the set of nodes into two independent subsets.
 
+Time Complexity: O(N+E) where N is the number of nodes in the graph, and E is the number of edges.
+We explore each node once when we transform it from uncolored to colored, traversing all its edges in the process.
+
+Space Complexity: O(N), the space used to store the color
 """
 
 class Solution(object):

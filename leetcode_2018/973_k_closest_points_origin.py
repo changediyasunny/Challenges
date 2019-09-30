@@ -26,18 +26,18 @@ Running TIme: O(N log K) using min-heap
 
 class Solution(object):
     def kClosest(self, points, K):
-        self.sort(points, 0, len(points)-1, K)
+        self.quicksort(points, 0, len(points)-1, K)
         return points[:K]
 
-    def sort(self, points, l, r, K):
+    def quicksort(self, points, l, r, K):
         if l < r:
             p = self.partition(points, r)
             if p == K:
                 return
             elif p < K:
-                self.sort(points, p+1, r, K)
+                self.quicksort(points, p+1, r, K)
             else:
-                self.sort(points, l, p-1, K)
+                self.quicksort(points, l, p-1, K)
 
     def partition(self, points, r):
         pivot = points[r]
@@ -47,3 +47,18 @@ class Solution(object):
                 l += 1
                 points[l], points[i] = points[i], points[l]
         return l
+
+# Heap Solution
+class Solution(object):
+    def kClosest(self, points, K):
+        """
+        :type points: List[List[int]]
+        :type K: int
+        :rtype: List[List[int]]
+        """
+        result = []
+        heapq.heapify(result)
+        for i, p in enumerate(points):
+            heapq.heappush(result, [p[0]**2 + p[1]**2,p])
+        print(result)
+        return [heapq.heappop(result)[1] for t in range(K)]

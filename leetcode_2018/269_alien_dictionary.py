@@ -48,6 +48,7 @@ class Solution(object):
                     degree[r] += 1
                     break
         result = ''
+        # there should only be one-letter having in-degree of 0
         stack = [c for c in degree if not degree[c]]
         while stack:
             k = stack.pop(0)
@@ -55,7 +56,8 @@ class Solution(object):
             for n in graph[k]:
                 degree[n] -= 1
                 if not degree[n]:
-                    # this is needed because ["ac","ab","b"] having
-                    # single letter word fails.
+                    # this is needed because for input >> ["ac","ab","b"]
+                    # "b" is at 2 places. one having single-indegree and one at single letter
+                    # which has indegree 0. We need to count actual in-degree.
                     stack.append(n)
         return result * (set(result) == chars)

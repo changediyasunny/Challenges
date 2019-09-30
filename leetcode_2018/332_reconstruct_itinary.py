@@ -28,7 +28,7 @@ class Solution(object):
         :rtype: List[str]
         """
         targets = collections.defaultdict(list)
-        # sorting & reversing because, smallest letter airport will
+        # With sorting & reversing, smallest destination airport code will
         # be at end and we can pop in stack to make it first
         for a, b in sorted(tickets)[::-1]:
             targets[a].append(b)

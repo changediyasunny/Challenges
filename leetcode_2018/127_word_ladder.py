@@ -111,9 +111,7 @@ def ladder_label(beginWord, endWord, wordList):
         for word in thisLevel:
             for i in range(len(word)):
                 label = word[:i] + '_' + word[i+1:]
-                if label in visited:
-                    continue
-                else:
+                if label not in visited:
                     visited.add(label)
                     nextLevel.extend(d.get(label, []))
         if endWord in nextLevel:

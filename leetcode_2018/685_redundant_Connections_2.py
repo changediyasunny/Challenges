@@ -75,7 +75,7 @@ class Solution(object):
 
         for u, v in edges:
             if v in parent:
-                # these are culprits and assume to have multiple parents
+                # these are assumed to have multiple parents
                 candidate.append((parent[v], v))
                 candidate.append((u, v))
             else: parent[v] = u
@@ -83,15 +83,14 @@ class Solution(object):
         if candidate:
             # some node has multiple parents or cycle exists
             return candidate[0] if detect_cycle(candidate[0]) else candidate[1]
-        else:
-            # ususal redundant connections
-            for edge in edges:
-                u, v = edge
-                u = find(u)
-                v = find(v)
-                if u == v:
-                    return edge
-                k[u] = k[v]
+        # ususal redundant connections
+        for edge in edges:
+            u, v = edge
+            u = find(u)
+            v = find(v)
+            if u == v:
+                return edge
+            k[u] = k[v]
 
 
 class Solution:

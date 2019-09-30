@@ -19,13 +19,13 @@ def priority_queue(temp_list):
     heapq.heapify(temp_list)
     n = temp_list[-1]
     temp_list = temp_list[:-1]
-    return n, temp_list
+    return n, temp_list[:-1] #temp_list
 
 def top_k_heap(heap_array, k):
     result = []
-    if k > 0:
-        result.append(heap_array[0])
-        k -= 1
+    # if k > 0:
+    #     result.append(heap_array[0])
+    #     k -= 1
     kids = []
     i = 0
     while k:

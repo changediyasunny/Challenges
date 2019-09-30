@@ -60,7 +60,7 @@ class Solution:
         :rtype: int
         """
         profit = 0
-        for i, p in enumerate(prices[1:], 1):
+        for i in range(len(prices)):
             if prices[i-1] < prices[i]:
                 profit += prices[i] - prices[i-1]
         return profit

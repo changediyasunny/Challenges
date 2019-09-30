@@ -51,7 +51,7 @@ class Solution(object):
         num = 0
         for i in range(len(s)):
             if s[i].isdigit():
-                num = num * 10 + ord(s[i])-ord('0')
+                num = num * 10 + int(s[i])
             if (not s[i].isspace() and not s[i].isdigit()) or i ==len(s)-1:
                 if sign == '+':
                     stack.append(num)

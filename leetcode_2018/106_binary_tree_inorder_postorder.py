@@ -68,13 +68,12 @@ def buildTree_stack(inorder, postorder):
         while(stack and stack[-1].val == inorder[-1]):
             prev = stack.pop()
             tmp = inorder.pop()
-        newNode = TreeNode(postorder.pop())
+        curr = TreeNode(postorder.pop())
         if prev is not None:
-            prev.left = newNode
+            prev.left = curr
         elif stack:
-            currTop = stack[-1]
-            currTop.right = newNode
-        stack.append(newNode)
+            stack[-1].right = curr
+        stack.append(curr)
         prev = None
     return root
 

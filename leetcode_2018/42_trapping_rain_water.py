@@ -91,3 +91,24 @@ def trap(self, height):
         right = max(right, h)
         waterLevel[i] = min(waterLevel[i], right) - h # drain to the right height
     return sum(waterLevel)
+
+class Solution(object):
+    def trap(self, height):
+        """
+        :type height: List[int]
+        :rtype: int
+        """
+        maxleft, maxright = 0, 0
+        left = 0
+        right = len(height) - 1
+        result = 0
+        while left <= right:
+            if height[left] <= height[right]:
+                if height[left] >= maxleft: maxleft = height[left]
+                else: result += maxleft-height[left]
+                left += 1
+            else:
+                if height[right] >= maxright: maxright = height[right]
+                else: result += maxright - height[right]
+                right -= 1
+        return result

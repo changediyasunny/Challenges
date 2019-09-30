@@ -53,8 +53,10 @@ class Solution(object):
         """
         dp = [float('inf')] * (amount+1)
         dp[0] = 0
-
         for i in range(1, amount+1):
-            dp[i] = min(dp[i-c] if (i-c)>=0 else float('inf') for c in coins) + 1
-
-        return [dp[amount], -1][dp[amount]==float('inf')]
+            for coin in coins:
+                if i - coin >= 0:
+                    dp[i] = min(dp[i], dp[i-coin] + 1)
+        if dp[-1] == float('inf'):
+            return -1
+        return dp[-1]

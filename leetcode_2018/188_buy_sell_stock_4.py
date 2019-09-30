@@ -35,14 +35,20 @@ def maxProfit_dp(prices, k=2):
     if not prices:
         return 0
     days = len(prices)
-    dp = [[0] * days for _ in range(k+1)]
+    dp = [[0] * len(prices) for _ in range(k+1)]
     for tr in range(1, k+1):
         maxdiff = -prices[0]
-        for dy in range(1, days):
+        for dy in range(1, len(prices)):
             # no-transactoin-at-all OR diff until m days
             dp[tr][dy] = max(dp[tr][dy-1], maxdiff + prices[dy])
             maxdiff = max(maxdiff, dp[tr-1][dy] - prices[dy])
             # max([(prices[day] - prices[m] + T[transaction - 1][m]) for m in range(day)]))
+            """ another slow solution """
+            # This maximum value of either
+            # a) No Transaction on the day. We pick the value from day - 1
+            # b) Max profit made by selling on the day plus the cost of the previous transaction, considered over m days
+            #T[tr][dy] = max(T[tr][dy - 1],max([(prices[dy] - prices[m] + T[tr - 1][m]) for m in range(dy)]))
+
     return dp[-1][-1]
 
 def maxProfit(prices, k=2):

@@ -21,8 +21,8 @@ sumRegion(2, 1, 4, 3) -> 10
 class RangeSum(object):
     def __init__(self, matrix):
         for row in matrix:
-            for col in range(1, len(row)):
-                row[col] += row[col-1]
+            for k in range(1, len(row)):
+                row[k] += row[k-1]
         self.matrix = matrix
 
     def update(self, row, col, val):
