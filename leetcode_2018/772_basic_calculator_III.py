@@ -24,103 +24,33 @@ Some examples:
 
 """
 class Solution(object):
+
     def calculate(self, s):
-        """
-        :type s: str
-        :rtype: int
-        """
-        def calculate(ops, num1, num2):
-            if ops == "+":
-                return num1 + num2
-            elif ops == "-":
-                return num2 - num1
-            elif ops == "*":
-                return num2 * num1
-            elif ops == "/":
-                return num2 // num1
+        return self.helper(list(s))
 
-        def valid_pred(curr_op, old_op):
-            if old_op in ['(', ')']:
-                return False
-            if curr_op in ['*', '/'] and old_op in ['+', '-']:
-                return False
-            return True
-
-        if not s:
+    def helper(self, array):
+        if len(array) == 0:
             return 0
-
+        sign = '+'
         num = 0
         stack = []
-        opers = []
-        i = 0
-        while i < len(s):
-            char = s[i]
-            if char.isspace():
-                i += 1
-                continue
+        while array:
+            char = array.pop(0)
             if char.isdigit():
-                num = int(char)
-                while i < len(s)-1 and s[i+1].isdigit():
-                    num = num * 10 + int(s[i+1])
-                    i += 1
-                if not stack and len(opers)==1 and opers[-1] == '-':
-                    num = -1 * num
-                    opers.pop()
-                stack.append(num)
-            elif char == '(':
-                # brackets start here
-                opers.append(char)
-            elif char == ')':
-                # perform inplace operation till char != ')'
-                while opers[-1] != '(':
-                    stack.append(calculate(opers.pop(), stack.pop(), stack.pop()))
-                opers.pop()
-            elif char in '* / + -':
-                while len(opers) != 0 and valid_pred(char, opers[-1]):
-                    stack.append(calculate(opers.pop(), stack.pop(), stack.pop()))
-                opers.append(char)
-            i += 1
-        while len(opers) > 0:
-            stack.append(calculate(opers.pop(), stack.pop(), stack.pop()))
-        return stack.pop()
-
-# TODO: invalid inputs
-class Solution(object):
-    def calculate(self, s):
-        """
-        :type s: str
-        :rtype: int
-        """
-        if not s:
-            return 0
-        s = s + '$'
-        def helper(stack, i):
-            total = 0
-            sign = '+'
-            while i < len(s):
-                char = s[i]
-                if char.isspace():
-                    i += 1
-                    continue
-
-                if char.isdigit():
-                    total = total * 10 + int(char)
-                    i += 1
-                elif char == '(':
-                    total, i = helper([], i+1)
-                else:
-                    if sign == '+':
-                        stack.append(total)
-                    elif sign == '-':
-                        stack.append(-total)
-                    elif sign == '*':
-                        stack.append(stack.pop() * total)
-                    elif sign == '/':
-                        stack.append(int(stack.pop() // total))
-                    total = 0
-                    i += 1
-                    if char == ')':
-                        return sum(stack), i
-                    sign = char
-            return sum(stack)
-        return helper([], 0)
+                num = num * 10 + int(char)
+            if char == "(":
+                num = self.helper(array)
+            if char in '+-*/)' or len(array)==0:
+                if sign == '+':
+                    stack.append(num)
+                elif sign == '-':
+                    stack.append(-1*num)
+                elif sign == '*':
+                    stack[-1] = stack[-1] * num
+                elif sign == '/':
+                    stack[-1] = int(stack[-1]/float(num))
+                sign = char
+                num = 0
+                if sign == ")":
+                    break
+        return sum(stack)
