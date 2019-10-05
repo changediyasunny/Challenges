@@ -47,15 +47,15 @@ class Solution(object):
 
         low = max(nums)
         high = sum(nums)
-        while low < high:
+        while low <= high:
             mid = (low + high)//2
             #print(low, mid, high)
-            # can you make at-most m sub-arrays with maximum sum atmost mid 
+            # can you make at-most m sub-arrays with maximum sum atmost mid
             if is_valid(nums, m, mid):
                 high = mid
             else:
                 low = mid + 1
-        return high
+        return low
 
 # Dynamic Programming + Memoization
 

@@ -9,14 +9,14 @@ Example 1:
 
 Input: [[1,1],2,[1,1]]
 Output: [1,1,2,1,1]
-Explanation: By calling next repeatedly until hasNext returns false, 
+Explanation: By calling next repeatedly until hasNext returns false,
              the order of elements returned by next should be: [1,1,2,1,1].
 
 Example 2:
 
 Input: [1,[4,[6]]]
 Output: [1,4,6]
-Explanation: By calling next repeatedly until hasNext returns false, 
+Explanation: By calling next repeatedly until hasNext returns false,
              the order of elements returned by next should be: [1,4,6].
 
 """
@@ -56,7 +56,7 @@ class NestedIterator(object):
         """
         # 0 index used to track current index in a list
         self.stack = [ [nestedList, 0] ]
-        
+
 
     def next(self):
         """
@@ -65,7 +65,7 @@ class NestedIterator(object):
         temp_list, index = self.stack[-1]
         self.stack[-1][1] += 1
         return temp_list[index].getInteger()
-        
+
 
     def hasNext(self):
         """
@@ -74,7 +74,7 @@ class NestedIterator(object):
         s = self.stack
         while s:
             temp_list, i = s[-1]
-            if i == len(temp_list):
+            if i == e
                 s.pop()
             else:
                 x = temp_list[i]
@@ -83,7 +83,7 @@ class NestedIterator(object):
                 s[-1][1] += 1
                 s.append([x.getList(), 0])
         return False
-        
+
 
 # Your NestedIterator object will be instantiated and called as such:
 # i, v = NestedIterator(nestedList), []
