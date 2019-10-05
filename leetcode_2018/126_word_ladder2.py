@@ -59,7 +59,6 @@ def findLadders(beginWord, endWord, wordList):
     def bfs_words(begin, end, dict_words):
         queue= [(begin, 1, [begin])]
         order = {}
-        visited = set()
         result = []
         while queue:
             word, level, steps = queue.pop(0)
@@ -68,10 +67,8 @@ def findLadders(beginWord, endWord, wordList):
                     result.append(steps)
                 elif result and len(steps) <= len(result[0]):
                     result.append(steps)
-            if word in visited:
-                if word in order and level > order[word]:
-                    continue
-            visited.add(word)
+            if word in order and level > order[word]:
+                continue
             order[word] = level
             for i in range(len(word)):
                 s = word[:i] + "_" + word[i+1:]
