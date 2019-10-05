@@ -25,8 +25,8 @@ DFS & BFS: Find strongly connected components of graph
 
 Time complexity : O(M * N) where M is the number of rows and N is the number of columns.
 
-Space complexity : O(O(min(M,N)) because in worst case where the grid is filled with lands,
-the size of queue can grow up to min(M,NM,N).
+Space complexity : O(min(M,N)) because in worst case where the grid is filled with lands,
+the size of queue can grow up to min(M,N).
 """
 
 
