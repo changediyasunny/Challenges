@@ -3,7 +3,7 @@
 
 Implement a basic calculator to evaluate a simple expression string.
 The expression string may contain open ( and closing parentheses ), the plus +
-or minus sign -, non-negative integers and empty spaces .
+or minus sign -, s .
 
 Example 1:
 Input: "1 + 1"
