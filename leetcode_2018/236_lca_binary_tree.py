@@ -54,7 +54,6 @@ class Solution(object):
             if node.right:
                 parents[node.right] = node
                 stack.append(node.right)
-        print(parents)
         temp_list = []
         while p:
             temp_list.append(p)
